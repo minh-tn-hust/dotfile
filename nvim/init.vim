@@ -1,4 +1,7 @@
-let g:python3_host_prog="/usr/bin/python"
+let g:python3_host_prog="/usr/bin/python3"
+autocmd BufNewFile  *.cpp 0r ~/Documents/C++/.template/skeleton.cpp 
+autocmd vimenter * ++nested colorscheme gruvbox
+let g:ctrlsf_backend='ack'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'jsformatter'
@@ -8,23 +11,24 @@ let g:fzf_action = {
 			\ 'ctrl-v': 'vsplit' }
 
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'tpope/vim-commentary'
-Plug 'preservim/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'morhetz/gruvbox'
-Plug 'digitaltoad/vim-pug'
-Plug 'pantharshit00/vim-prisma'
-Plug 'dyng/ctrlsf.vim'
-Plug 'posva/vim-vue'
-Plug 'jiangmiao/auto-pairs'
-Plug 'Chiel92/vim-autoformat'
-
-
+	Plug 'Yggdroot/indentLine'
+	Plug 'mileszs/ack.vim'
+	Plug 'tpope/vim-commentary'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'vim-airline/vim-airline'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'morhetz/gruvbox'
+	Plug 'ryanoasis/vim-devicons'
+	Plug 'posva/vim-vue'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'Chiel92/vim-autoformat'
+	Plug 'dyng/ctrlsf.vim'
+	Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'psliwka/vim-smoothie'
+	Plug 'mhinz/vim-startify'
 call plug#end()
 
 " Config nerdtree plugin
@@ -124,7 +128,7 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
+" Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
@@ -220,8 +224,8 @@ set hls
 set is
 set clipboard=unnamedplus
 set gfn=Fixedsys:h10
-set ts=4
-set sw=4
+set ts=2
+set sw=2
 set si
 set noswapfile
 set nowrap
@@ -230,7 +234,7 @@ set nobackup
 set nowritebackup
 set nu
 
-noremap <Leader>y "+y
+noremap <Leader>y *+y
 
 " config đếm dòng theo số dần nhấn j k
 augroup numbertoggle
@@ -239,12 +243,26 @@ augroup numbertoggle
 	autocmd BufLeave,FocusLost,InsertEnter * set nornu
 augroup END
 
-colorscheme gruvbox
-
 " highlight dòng hiện tại "
 set cursorline
 hi CursorLine   cterm=underline
 hi CursorColumn cterm=underline
 nnoremap <Space> @q
 
-noremap <F3> :Autoformat<CR>
+noremap <F3> :Autoformat<CR>.
+
+
+" git nerd tree config
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
