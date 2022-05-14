@@ -29,5 +29,28 @@
     "snippet": "\ue60b", //  pair of curly braces
     "typeParameter": "\uf728", //  file presentation box
     "default": "\uf29c" //  question mark in circle
-  }
+  },
+	"languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    }
 }

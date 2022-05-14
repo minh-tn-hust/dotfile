@@ -12,6 +12,7 @@ call plug#begin()
 
 	" Color scheme
 	Plug 'morhetz/gruvbox'
+	Plug 'dracula/vim'
 
 	" Plugin dành cho tìm kiếm các từ có trong toàn bộ project
 	Plug 'mileszs/ack.vim'
@@ -43,4 +44,6 @@ call plug#begin()
 	" Di chuyển nhanh hơn với vim-surround
 	Plug 'tpope/vim-surround'
 
+	"Format code
+	Plug 'sbdchd/neoformat'	
 call plug#end()
